@@ -46,6 +46,12 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.supermorpion/com.supermorpion.App</mainClass>
+                    <launcher>super-morpion</launcher>
+                    <jlinkImageName>super-morpion</jlinkImageName>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <noManFiles>true</noManFiles>
+                    <stripDebug>true</stripDebug>
                 </configuration>
             </plugin>
         </plugins>

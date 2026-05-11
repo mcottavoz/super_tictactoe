@@ -1,6 +1,11 @@
 com/supermorpion/model/GameBoard.class
 com/supermorpion/model/SmallBoard.class
 com/supermorpion/App.class
+com/supermorpion/online/OnlineClient.class
 com/supermorpion/model/Player.class
+com/supermorpion/view/OnlineLobbyController.class
+com/supermorpion/view/MenuViewController.class
 com/supermorpion/ai/AIPlayer.class
+module-info.class
+com/supermorpion/online/OnlineClient$1.class
 com/supermorpion/view/GameViewController.class
