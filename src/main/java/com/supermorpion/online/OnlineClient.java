@@ -14,7 +14,7 @@ import java.util.function.Consumer;
  */
 public class OnlineClient {
 
-    public static final String DEFAULT_SERVER = "ws://localhost:8080";
+    public static final String DEFAULT_SERVER = "supertictactoe-production.up.railway.app";
 
     private final HttpClient httpClient = HttpClient.newHttpClient();
     private WebSocket ws;
