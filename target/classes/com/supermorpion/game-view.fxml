@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:id="gameRoot"
+            fx:controller="com.supermorpion.view.GameViewController"
+            stylesheets="@style.css"
+            style="-fx-background-color: #080818;">
+
+    <!-- ── Header ── -->
+    <top>
+        <VBox styleClass="header" alignment="CENTER" spacing="6">
+            <padding><Insets top="18" right="28" bottom="12" left="28"/></padding>
+
+            <Label text="SUPER MORPION" styleClass="game-title"/>
+            <Label text="Ultimate Tic-Tac-Toe" styleClass="game-subtitle"/>
+
+            <!-- Player row -->
+            <HBox alignment="CENTER_LEFT" spacing="0">
+                <padding><Insets top="10" right="0" bottom="0" left="0"/></padding>
+
+                <VBox fx:id="playerXCard" styleClass="player-card" alignment="CENTER" spacing="2">
+                    <Label text="X" styleClass="player-symbol-x"/>
+                    <Label fx:id="playerXName" text="Joueur 1" styleClass="player-name"/>
+                    <Label fx:id="scoreXLabel" text="0" styleClass="player-score"/>
+                </VBox>
+
+                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <Label fx:id="statusLabel" text="VS" styleClass="status-vs"/>
+                </VBox>
+
+                <VBox fx:id="playerOCard" styleClass="player-card" alignment="CENTER" spacing="2">
+                    <Label text="O" styleClass="player-symbol-o"/>
+                    <Label fx:id="playerOName" text="Joueur 2" styleClass="player-name"/>
+                    <Label fx:id="scoreOLabel" text="0" styleClass="player-score"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- ── Board ── -->
+    <center>
+        <StackPane styleClass="board-area">
+            <GridPane fx:id="globalGrid" alignment="CENTER"/>
+        </StackPane>
+    </center>
+
+    <!-- ── Footer ── -->
+    <bottom>
+        <HBox styleClass="bottom-bar" alignment="CENTER" spacing="16">
+            <padding><Insets top="14" right="28" bottom="14" left="28"/></padding>
+            <Button text="REJOUER" styleClass="action-button" onAction="#onNewGame"/>
+            <Button text="← MENU" styleClass="menu-back-button" onAction="#onGoToMenu"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

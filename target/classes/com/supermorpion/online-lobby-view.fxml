@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:id="lobbyRoot"
+           fx:controller="com.supermorpion.view.OnlineLobbyController"
+           stylesheets="@style.css"
+           style="-fx-background-color: #080818;"
+           prefWidth="780" prefHeight="920">
+
+    <!-- ══ Panel 1 : Mode selection ══ -->
+    <VBox fx:id="modePanel" alignment="CENTER" spacing="32">
+        <padding><Insets top="0" right="60" bottom="0" left="60"/></padding>
+
+        <VBox alignment="CENTER" spacing="6">
+            <Label text="MULTIJOUEUR EN LIGNE" styleClass="game-title"
+                   style="-fx-font-size: 30px;"/>
+            <Label text="Jouez avec un ami sur internet" styleClass="menu-subtitle"/>
+        </VBox>
+
+        <!-- Server URL -->
+        <VBox alignment="CENTER" spacing="6" maxWidth="480">
+            <Label text="SERVEUR WEBSOCKET" styleClass="lobby-field-label"/>
+            <TextField fx:id="serverUrlField" styleClass="lobby-input"
+                       promptText="ws://localhost:8080" maxWidth="480"/>
+        </VBox>
+
+        <!-- Cards row -->
+        <HBox alignment="CENTER" spacing="24">
+
+            <!-- Create card -->
+            <VBox styleClass="mode-card mode-card-2p" alignment="CENTER" spacing="14">
+                <padding><Insets top="28" right="32" bottom="28" left="32"/></padding>
+                <Label text="+" styleClass="lobby-big-icon-x"/>
+                <Label text="CRÉER UNE PARTIE" styleClass="mode-card-title"/>
+                <Label text="Obtiens un code et partage-le"
+                       styleClass="mode-card-desc" wrapText="true"
+                       textAlignment="CENTER" maxWidth="180"/>
+                <Button text="CRÉER" styleClass="action-button" onAction="#createRoom"/>
+            </VBox>
+
+            <!-- Join card -->
+            <VBox styleClass="mode-card mode-card-ai" alignment="CENTER" spacing="14">
+                <padding><Insets top="28" right="32" bottom="28" left="32"/></padding>
+                <Label text="→" styleClass="lobby-big-icon-ia"/>
+                <Label text="REJOINDRE" styleClass="mode-card-title"/>
+                <TextField fx:id="roomCodeInput" styleClass="lobby-code-input"
+                           promptText="CODE" maxWidth="130"/>
+                <Button text="REJOINDRE" styleClass="mode-back-button"
+                        onAction="#joinRoom"/>
+            </VBox>
+
+        </HBox>
+
+        <Button text="← RETOUR AU MENU" styleClass="menu-back-button" onAction="#goBack"/>
+    </VBox>
+
+    <!-- ══ Panel 2 : Waiting ══ -->
+    <VBox fx:id="waitingPanel" alignment="CENTER" spacing="26" visible="false">
+
+        <Label text="EN ATTENTE" styleClass="game-title" style="-fx-font-size: 28px;"/>
+
+        <!-- Code box (shown only when hosting) -->
+        <VBox fx:id="codeBox" alignment="CENTER" spacing="8">
+            <Label text="TON CODE DE PARTIE" styleClass="lobby-field-label"/>
+            <Label fx:id="roomCodeLabel" text="A B C D" styleClass="lobby-code-display"/>
+            <Label text="Communique ce code à ton adversaire"
+                   styleClass="menu-subtitle"/>
+        </VBox>
+
+        <ProgressIndicator prefWidth="52" prefHeight="52"
+                           style="-fx-progress-color: #00e5ff;"/>
+        <Label fx:id="waitingStatusLabel" text="Connexion…" styleClass="menu-subtitle"/>
+
+        <Button text="ANNULER" styleClass="menu-back-button" onAction="#cancelWaiting"/>
+    </VBox>
+
+    <!-- ══ Panel 3 : Error ══ -->
+    <VBox fx:id="errorPanel" alignment="CENTER" spacing="22" visible="false">
+
+        <Label text="ERREUR DE CONNEXION" styleClass="game-title"
+               style="-fx-font-size: 24px; -fx-text-fill: #ff1744;
+                      -fx-effect: dropshadow(gaussian, #ff1744, 18, 0.4, 0, 0);"/>
+        <Label fx:id="errorLabel" text="" styleClass="menu-subtitle"
+               wrapText="true" textAlignment="CENTER" maxWidth="500"/>
+
+        <HBox alignment="CENTER" spacing="16">
+            <Button text="RÉESSAYER" styleClass="action-button" onAction="#showModePanel"/>
+            <Button text="← MENU"    styleClass="menu-back-button" onAction="#goBack"/>
+        </HBox>
+    </VBox>
+
+</StackPane>

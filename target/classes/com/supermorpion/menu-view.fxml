@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:id="menuRoot"
+           fx:controller="com.supermorpion.view.MenuViewController"
+           stylesheets="@style.css"
+           style="-fx-background-color: #080818;"
+           prefWidth="780" prefHeight="920">
+
+    <VBox alignment="CENTER" spacing="48">
+
+        <!-- ── Title ── -->
+        <VBox alignment="CENTER" spacing="8">
+            <Label text="SUPER MORPION" styleClass="menu-title"/>
+            <Label text="Ultimate Tic-Tac-Toe" styleClass="menu-subtitle"/>
+        </VBox>
+
+        <!-- ── Local mode cards ── -->
+        <HBox alignment="CENTER" spacing="28">
+
+            <VBox fx:id="card2P" styleClass="mode-card mode-card-2p"
+                  alignment="CENTER" spacing="14"
+                  onMouseClicked="#startTwoPlayers"
+                  onMouseEntered="#hoverOn2P"
+                  onMouseExited="#hoverOff">
+                <padding><Insets top="28" right="36" bottom="28" left="36"/></padding>
+                <HBox alignment="CENTER" spacing="8">
+                    <Label text="X" styleClass="mode-sym-x"/>
+                    <Label text="vs" styleClass="mode-vs"/>
+                    <Label text="O" styleClass="mode-sym-o"/>
+                </HBox>
+                <Label text="2 JOUEURS" styleClass="mode-card-title"/>
+                <Label text="Affronte un ami en local"
+                       styleClass="mode-card-desc" wrapText="true"
+                       textAlignment="CENTER" maxWidth="200"/>
+            </VBox>
+
+            <VBox fx:id="cardAI" styleClass="mode-card mode-card-ai"
+                  alignment="CENTER" spacing="14"
+                  onMouseClicked="#startVsAI"
+                  onMouseEntered="#hoverOnAI"
+                  onMouseExited="#hoverOff">
+                <padding><Insets top="28" right="36" bottom="28" left="36"/></padding>
+                <HBox alignment="CENTER" spacing="8">
+                    <Label text="X" styleClass="mode-sym-x"/>
+                    <Label text="vs" styleClass="mode-vs"/>
+                    <Label text="IA" styleClass="mode-sym-ia"/>
+                </HBox>
+                <Label text="CONTRE L'IA" styleClass="mode-card-title"/>
+                <Label text="Défie l'intelligence artificielle"
+                       styleClass="mode-card-desc" wrapText="true"
+                       textAlignment="CENTER" maxWidth="200"/>
+            </VBox>
+
+        </HBox>
+
+        <!-- ── Online mode button ── -->
+        <VBox fx:id="cardOnline" styleClass="online-card"
+              alignment="CENTER" spacing="10"
+              onMouseClicked="#startOnline"
+              onMouseEntered="#hoverOnOnline"
+              onMouseExited="#hoverOff">
+            <padding><Insets top="20" right="60" bottom="20" left="60"/></padding>
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="X" styleClass="mode-sym-x"/>
+                <Label text="vs" styleClass="mode-vs"/>
+                <Label text="O" styleClass="mode-sym-online"/>
+            </HBox>
+            <Label text="MULTIJOUEUR EN LIGNE" styleClass="online-card-title"/>
+            <Label text="Jouez avec un ami sur internet via WebSocket"
+                   styleClass="mode-card-desc"/>
+        </VBox>
+
+        <!-- ── Hint ── -->
+        <Label text="Gagne 3 petits morpions alignés pour remporter la partie"
+               styleClass="menu-hint"/>
+
+    </VBox>
+
+</StackPane>

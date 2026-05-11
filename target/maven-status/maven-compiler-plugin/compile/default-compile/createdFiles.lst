@@ -1,0 +1,6 @@
+com/supermorpion/model/GameBoard.class
+com/supermorpion/model/SmallBoard.class
+com/supermorpion/App.class
+com/supermorpion/model/Player.class
+com/supermorpion/ai/AIPlayer.class
+com/supermorpion/view/GameViewController.class
