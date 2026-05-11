@@ -1,0 +1,41 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build Windows app image
+        run: mvn clean javafx:jlink
+
+      - name: Zip app image
+        run: Compress-Archive -Path target/super-morpion -DestinationPath Super-Morpion-Windows.zip
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Super-Morpion-Windows.zip
+          name: "Super Morpion ${{ github.ref_name }}"
+          body: |
+            ## Comment jouer
+
+            1. Télécharge **Super-Morpion-Windows.zip**
+            2. Extrais le zip (clic droit → Extraire tout)
+            3. Ouvre le dossier `super-morpion` et double-clique sur **super-morpion.exe**
+
+            Aucune installation de Java requise.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
