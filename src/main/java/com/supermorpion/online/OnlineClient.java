@@ -30,6 +30,9 @@ public class OnlineClient {
     public void setOnError(Consumer<String> h)   { onError   = h; }
 
     public void connect(String url) {
+        if (!url.startsWith("ws://") && !url.startsWith("wss://")) {
+            url = "wss://" + url;
+        }
         httpClient.newWebSocketBuilder()
             .buildAsync(URI.create(url), new WebSocket.Listener() {
 
