@@ -16,7 +16,9 @@ public class OnlineClient {
 
     public static final String DEFAULT_SERVER = "supertictactoe-production.up.railway.app";
 
-    private final HttpClient httpClient = HttpClient.newHttpClient();
+    private final HttpClient httpClient = HttpClient.newBuilder()
+        .version(HttpClient.Version.HTTP_1_1)
+        .build();
     private WebSocket ws;
 
     private Consumer<String> onMessage;
